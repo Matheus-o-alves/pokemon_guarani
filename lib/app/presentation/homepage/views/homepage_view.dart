@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Pokedex'),
+          title: const Text('Pokémon Guarani'),
           actions: [
             IconButton(
               onPressed: () => controller.favoritePokemons(),

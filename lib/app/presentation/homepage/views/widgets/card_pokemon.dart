@@ -14,7 +14,13 @@ import '../../controllers/homepage_controller.dart';
 class CardPokemon extends StatelessWidget {
   Pokemon pokemon;
   int index;
-  CardPokemon({Key? key, required this.pokemon, required this.index})
+  HomePageController controller;
+
+  CardPokemon(
+      {Key? key,
+      required this.pokemon,
+      required this.index,
+      required this.controller})
       : super(key: key);
 
   @override
@@ -109,11 +115,43 @@ class CardPokemon extends StatelessWidget {
                           !pokemon.isFavorite,
                           pokemon,
                         );
-
-                        snackBarFavorite(
-                          context,
-                          controller.showIsFavorite,
+                        final snackBar = SnackBar(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                color: Colors.yellow, width: 2),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          content: Row(
+                            children: [
+                              controller.isFavoriteList
+                                  ? SvgPicture.asset(
+                                      "lib/app/assets/icons/icon_favorite.svg",
+                                      height: 30,
+                                      width: 40,
+                                    )
+                                  : SvgPicture.asset(
+                                      "lib/app/assets/icons/icon_not_favorite.svg",
+                                      height: 30,
+                                      width: 40,
+                                    ),
+                              const SizedBox(width: 10),
+                              controller.isFavoriteList
+                                  ? const Text(
+                                      'Pokémon adicionado aos favoritos',
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black),
+                                    )
+                                  : const Text(
+                                      'Pokémon removido dos favoritos',
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black),
+                                    )
+                            ],
+                          ),
+                          duration: const Duration(seconds: 3),
                         );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       child: pokemon.isFavorite
                           ? SvgPicture.asset(
@@ -125,7 +163,7 @@ class CardPokemon extends StatelessWidget {
                               "lib/app/assets/icons/icon_not_favorite.svg",
                               height: 30,
                               width: 40,
-                            )),
+                            ))
                 ],
               ),
             ),
@@ -134,42 +172,48 @@ class CardPokemon extends StatelessWidget {
       ),
     );
   }
-}
 
-void snackBarFavorite(BuildContext context, bool isFavorite) {
-  final snackBar = SnackBar(
-    backgroundColor: Colors.white,
-    shape: RoundedRectangleBorder(
-      side: const BorderSide(color: Colors.yellow, width: 2),
-      borderRadius: BorderRadius.circular(8),
-    ),
-    content: Row(
-      children: [
-        isFavorite
-            ? SvgPicture.asset(
-                "lib/app/assets/icons/icon_favorite.svg",
-                height: 30,
-                width: 40,
-              )
-            : SvgPicture.asset(
-                "lib/app/assets/icons/icon_not_favorite.svg",
-                height: 30,
-                width: 40,
-              ),
-        const SizedBox(width: 10),
-        isFavorite
-            ? const Text(
-                'Pokemon adicionado aos favoritos',
-                style: TextStyle(fontSize: 16, color: Colors.black),
-              )
-            : const Text(
-                'Pokemon removido dos favoritos',
-                style: TextStyle(fontSize: 16, color: Colors.black),
-              )
-      ],
-    ),
-    duration: const Duration(seconds: 3),
-  );
-
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  // void snackBarFavorite(
+  //   BuildContext context,
+  // ) {
+  //   final snackBar = SnackBar(
+  //     backgroundColor: Colors.white,
+  //     shape: RoundedRectangleBorder(
+  //       side: const BorderSide(color: Colors.yellow, width: 2),
+  //       borderRadius: BorderRadius.circular(8),
+  //     ),
+  //     content: StreamBuilder<bool>(
+  //         stream: controller.streamIsFavorite,
+  //         initialData: false,
+  //         builder: (context, snapshot) {
+  //           return Row(
+  //             children: [
+  //               snapshot.data.reactive.hasListeners
+  //                   ? SvgPicture.asset(
+  //                       "lib/app/assets/icons/icon_favorite.svg",
+  //                       height: 30,
+  //                       width: 40,
+  //                     )
+  //                   : SvgPicture.asset(
+  //                       "lib/app/assets/icons/icon_not_favorite.svg",
+  //                       height: 30,
+  //                       width: 40,
+  //                     ),
+  //               const SizedBox(width: 10),
+  //               snapshot.data.reactive.hasListeners
+  //                   ? const Text(
+  //                       'Pokemon adicionado aos favoritos',
+  //                       style: TextStyle(fontSize: 16, color: Colors.black),
+  //                     )
+  //                   : const Text(
+  //                       'Pokemon removido dos favoritos',
+  //                       style: TextStyle(fontSize: 16, color: Colors.black),
+  //                     )
+  //             ],
+  //           );
+  //         }),
+  //     duration: const Duration(seconds: 3),
+  //   );
+  //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  // }
 }

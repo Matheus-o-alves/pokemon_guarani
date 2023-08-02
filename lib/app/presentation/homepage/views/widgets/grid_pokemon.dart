@@ -26,6 +26,7 @@ class GridPokemon extends StatelessWidget {
                   child: CardPokemon(
                     index: index,
                     pokemon: controller.listPokemons[index],
+                    controller: controller,
                   ),
                 );
               }

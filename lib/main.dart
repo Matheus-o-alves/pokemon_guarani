@@ -30,7 +30,7 @@ class Pokedex extends StatelessWidget {
       initialBinding: HomePageBinding(),
       getPages: AppPages.pages,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.green,
       ),
     );
   }

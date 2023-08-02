@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -26,7 +28,6 @@ class HomePageController extends GetxController {
   PokemonHivRepository hivePokemonRepository =
       GetIt.I.get<PokemonHivRepository>();
   List<String> allPokemonsFavorite = [];
-  late bool showIsFavorite;
 
   @override
   void onInit() async {
@@ -70,12 +71,12 @@ class HomePageController extends GetxController {
     if (isFavorite && !favoritesPokemons.contains(pokemon)) {
       favoritesPokemons.add(pokemon);
       await addFavorites(pokemon.name);
-      showIsFavorite = true;
+ 
     } else {
       favoritesPokemons.removeWhere((element) => element.name == pokemon.name);
       if (isFavoriteList) {
         listPokemons.remove(pokemon);
-        showIsFavorite = false;
+
       }
     }
     pokemon.isFavorite = isFavorite;
