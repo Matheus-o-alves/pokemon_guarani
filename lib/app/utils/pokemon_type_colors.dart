@@ -1,0 +1,51 @@
+import 'package:flutter/material.dart';
+
+Map<String, dynamic> colorBackgroundCard = {
+  'grass': Color(0xff70D090),
+  'fire': Color(0xffEC8C4C),
+  'water': Color(0xffEC8C4C),
+  'bug': Color(0xffD0EC94),
+  'normal': Color(0xffFFE0CA),
+  'fighting': Color(0xff00000066),
+  'flying': Color(0xffFFE0CA),
+  'poison': Color(0xffDDA1E7),
+  'ground': Color(0xff9E6E53),
+  'rock': Color(0xff9A8371),
+  'ghost': Color(0xffCDCDCD),
+  'steel': Color(0xffEC8C4C),
+  'electric': Color(0xff7A95AA),
+  'psychic': Color(0xffA98DF8),
+  'ice': Color(0xffEC8C4C),
+  'dragon': Color(0xffB7DBFF),
+  'dark': Color(0xff8D8ECB),
+  'fairy': Color(0xffFDB7DA),
+};
+Map<String, dynamic> colorBackgrounType = {
+  'grass': Color(0xFF1B932C),
+  'fire': Color(0xffF10A34),
+  'water': Color(0xff265DFC),
+  'bug': Color(0xff54DC44),
+  'normal': Color(0xff7D3600),
+  'fighting': Color(0xff0F0905),
+  'flying': Color(0xff95C4E4),
+  'poison': Color(0xff8849B0),
+  'ground': Color(0xff673E2C),
+  'rock': Color(0xff54473D),
+  'ghost': Color(0xff8A8886),
+  'steel': Color(0xff5D666E),
+  'electric': Color(0xffF8A801),
+  'psychic': Color(0xff6114BC),
+  'ice': Color(0xff8FC3E9),
+  'dragon': Color(0xff0804B4),
+  'dark': Color(0xff040534),
+  'fairy': Color(0xffFF48CC),
+};
+
+Map<String, dynamic> colorStatPokemon = {
+  'hp': Colors.yellow,
+  'attack': Colors.red,
+  'defense': Colors.green,
+  'special-attack': Colors.blueGrey,
+  'special-defense': Colors.deepPurpleAccent,
+  'speed': Colors.orangeAccent,
+};
