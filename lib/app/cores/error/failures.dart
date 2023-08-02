@@ -1,3 +1,5 @@
+// ignore_for_file: hash_and_equals
+
 import 'package:pokemon_guarani/app/cores/error/exceptions.dart';
 
 abstract class Failure {

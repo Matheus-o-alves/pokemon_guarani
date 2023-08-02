@@ -1,3 +1,5 @@
+// ignore_for_file: hash_and_equals
+
 class ServerException implements Exception {
   final String? message;
 
@@ -36,7 +38,6 @@ class OtherError implements Exception {
 
 class Errors {
   static handleError({int? statusCode}) {
-    print(statusCode);
     switch (statusCode) {
       case 404:
         return NotFoundException();

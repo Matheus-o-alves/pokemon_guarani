@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 
-import 'features/pokemon/data/datasources/pokemon_remote_datasource.dart';
-import 'features/pokemon/data/repositories/pokemon_repository_impl.dart';
-import 'features/pokemon/domain/usecases/get_all_pokemons.dart';
-import 'features/pokemon/domain/usecases/get_pokemon_by_nature.dart';
-import 'features/pokemon/domain/usecases/get_pokemons_in_that_nature.dart';
+import 'data/datasources/pokemon_remote_datasource.dart';
+import 'data/repositories/pokemon_repository_impl.dart';
+import 'domain/usecases/get_all_pokemons.dart';
+import 'domain/usecases/get_pokemon_by_nature.dart';
+import 'domain/usecases/get_pokemons_in_that_nature.dart';
 
 class GetAllPokemons {
   static PokemonRemoteDataSourceImpl datasource = PokemonRemoteDataSourceImpl(
