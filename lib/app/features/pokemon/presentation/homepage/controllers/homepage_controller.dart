@@ -23,11 +23,13 @@ class HomePageController extends GetxController {
   late Failure failure;
   PokemonHivRepository hivePokemonRepository =
       GetIt.I.get<PokemonHivRepository>();
+  List<String> allPokemonsFavorite = [];
 
   @override
-  void onInit() {
+  void onInit() async {
     getPokemon(pag);
     verifyScroll();
+    await getAllPOkemonsFavorites();
 
     super.onInit();
   }
@@ -38,14 +40,14 @@ class HomePageController extends GetxController {
     super.onClose();
   }
 
-  Future<void> add(String pokemonName) async {
+  Future<void> addFavorites(String pokemonName) async {
     hivePokemonRepository.addString(pokemonName);
   }
 
-  Future<void> get() async {
+  Future<void> getAllPOkemonsFavorites() async {
     final pokemons = await hivePokemonRepository.getAllStrings();
     for (var i = 0; i < pokemons.length; i++) {
-      print(pokemons[i].pokemonHiveModel);
+      allPokemonsFavorite.add(pokemons[i].pokemonHiveModel);
     }
   }
 
@@ -64,7 +66,7 @@ class HomePageController extends GetxController {
   void pokemonIsFavorite(bool isFavorite, Pokemon pokemon) async {
     if (isFavorite && !favoritesPokemons.contains(pokemon)) {
       favoritesPokemons.add(pokemon);
-      await add(pokemon.name);
+      await addFavorites(pokemon.name);
     } else {
       favoritesPokemons.removeWhere((element) => element.name == pokemon.name);
       if (isFavoriteList) {
@@ -73,8 +75,6 @@ class HomePageController extends GetxController {
     }
     pokemon.isFavorite = isFavorite;
     update(['cards']);
-
-    await get();
   }
 
   void makePokemonFavorite() {
@@ -84,7 +84,8 @@ class HomePageController extends GetxController {
     }
 
     for (int j = 0; j < listPokemons.length; j++) {
-      if (pokemons.contains(listPokemons[j].name)) {
+      if (pokemons.contains(listPokemons[j].name) ||
+          allPokemonsFavorite.contains(listPokemons[j].name)) {
         listPokemons[j].isFavorite = true;
       }
     }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:injectable/injectable.dart';
 
 import 'app/features/pokemon/data/models/hive/pokemon_hive_model.dart';
 import 'app/features/pokemon/presentation/homepage/bindings/homepage_binding.dart';

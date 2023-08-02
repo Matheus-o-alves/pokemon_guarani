@@ -1,7 +1,6 @@
 import '../../domain/entities/pokemon_thumbnail.dart';
 
 class PokemonThumbnailModel extends PokemonThumbnail {
-  // static int idPokemon = 0;
   PokemonThumbnailModel({
     required int id,
     required String name,
